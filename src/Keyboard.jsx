@@ -1,8 +1,36 @@
-export function Keyboard() {
-    return (
-        <div className="keyboard">
-            <h1>I am the keyboard component!</h1>
-        </div>
+import { Key } from './Key';
 
-    )
+
+const keyLayout = [
+    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
+    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"],
+    ["Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "Shift"],
+    ["Space"]
+];
+
+
+export function Keyboard() {
+
+
+    return (
+        <div className="keyboard-container">
+        <div className="keyboard">
+            {keyLayout.map((row, rowIndex) => (
+                <div className="row" key={rowIndex}>
+                    {row.map((keyLabel, keyIndex) => (
+
+                        <button key={keyIndex} className={`key ${
+                            keyLabel.toLowerCase() === "space" ? "space-key" :
+                                keyLabel.toLowerCase() === "shift" ? "shift-key" : ""
+                        }`}
+                        >
+                            {keyLabel}
+                        </button>
+                    ))}
+                </div>
+            ))}
+        </div>
+        </div>
+    );
 }
