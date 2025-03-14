@@ -1,5 +1,8 @@
 export function Keyboard() {
     return (
-        <h1>I am the keyboard component!</h1>
+        <div className="keyboard">
+            <h1>I am the keyboard component!</h1>
+        </div>
+
     )
 }

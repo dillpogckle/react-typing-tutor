@@ -1,5 +1,7 @@
 export function Phrase() {
     return (
-        <h1>I am the phrase to be typed!</h1>
+        <div className="phrase">
+            <h1>I am the phrase to be typed!</h1>
+        </div>
     )
 }
