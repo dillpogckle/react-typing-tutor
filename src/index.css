@@ -48,14 +48,12 @@
 
 /* Shift key */
 .shift-key {
-    width: 90px; /* Wider shift key */
-    font-weight: bold;
+    width: 90px;
 }
 
 /* Space key */
 .space-key {
-    width: 300px; /* Bigger space bar */
+    width: 300px;
     background: black;
-    font-weight: bold;
     border-radius: 15px;
 }

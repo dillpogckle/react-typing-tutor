@@ -19,18 +19,12 @@ export function Keyboard() {
             {keyLayout.map((row, rowIndex) => (
                 <div className="row" key={rowIndex}>
                     {row.map((keyLabel, keyIndex) => (
-
-                        <button key={keyIndex} className={`key ${
-                            keyLabel.toLowerCase() === "space" ? "space-key" :
-                                keyLabel.toLowerCase() === "shift" ? "shift-key" : ""
-                        }`}
-                        >
-                            {keyLabel}
-                        </button>
+                        <Key label={keyLabel} key={keyIndex}/>
                     ))}
                 </div>
             ))}
         </div>
         </div>
+
     );
 }
