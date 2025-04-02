@@ -1,9 +1,17 @@
-/* Center the keyboard on the screen */
+:root {
+    font-family: Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;
+    box-sizing: border-box
+}
+
+body {
+    margin: 0
+}
+
 .keyboard-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
+    margin-top: 40px;
 }
 
 /* Keyboard styles */
@@ -11,37 +19,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #bbb; /* Slightly darker background for contrast */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    max-width: 1000px; /* Prevents excessive horizontal spread */
+    background-color: silver;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 0 4px #6d6d6d;
+    width: 880px
 }
 
 /* Row styles */
 .row {
+    margin-bottom: 8px;
     display: flex;
-    justify-content: center;
-    margin: 8px 0;
+    gap: 8px
 }
 
 /* Key styles */
 .key {
-    width: 60px;
-    height: 60px;
-    margin: 4px;
-    border: none;
-    border-radius: 8px;
-    background: black;
-    color: white;
-    font-size: 20px;
+    padding: 16px;
+    border: 1px solid black;
+    background-color: #222;
+    color: #fff;
+    font-size: 1.4em;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.6);
+    align-items: center;
+    box-shadow: 0 4px 0 2px #0006;
+    transition: all .05s ease
 }
 
-.key:active {
+.active {
     transform: translateY(4px); /* Moves button down slightly */
     box-shadow: none; /* Removes shadow for pressed effect */
 }
@@ -54,6 +63,34 @@
 /* Space key */
 .space-key {
     width: 300px;
-    background: black;
-    border-radius: 15px;
+}
+
+.phrase-container {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 5em;
+    text-align: center;
+    white-space: pre;
+}
+
+.typed {
+    color: black;
+}
+
+.not-typed {
+    color: #0a307c80
+}
+
+.next {
+    color: #0a307c80;
+    text-decoration: underline;
+}
+
+.next-key {
+    box-shadow: 0 4px 0 2px #ff0000b3
 }

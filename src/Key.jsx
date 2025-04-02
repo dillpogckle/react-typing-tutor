@@ -1,30 +1,23 @@
-export function Key(props) {
-    if (props.label.toLowerCase() === "shift"){
-        console.log("This is running lol")
-        return (
-            <div className="key shift-key">
-                <button key={props.key} className="key shift-key">
-                    {props.label}
-                </button>
-            </div>
-        )
-    }
-    else if (props.label.toLowerCase() === "space"){
-        console.log("This is being run")
-        return (
-            <div className="key space-key">
-                <button key={props.key} className="key space-key">
-                    {props.label}
-                </button>
-            </div>
-        )
-    }
-    console.log("Weirdly this is running")
+export function Key({ label, keysPressed, nextLetter }) {
+
+    const isShiftActive = keysPressed.has("Shift");
+    const labelCheck = label === "Space" ? " " : label;
+
+    const isActive = isShiftActive ?
+        (label === "Shift" ? isShiftActive : keysPressed.has(labelCheck.toUpperCase())) :
+        keysPressed.has(labelCheck);
+
+    const isNext = nextLetter === ""
+        ? false
+        : nextLetter === " "
+            ? labelCheck === nextLetter
+            : labelCheck === (isShiftActive || nextLetter !== nextLetter.toUpperCase() ? nextLetter : "Shift");
+
+    const displayLabel = isShiftActive && label !== "Space" && label !== "Shift" ? label.toUpperCase() : label;
+
     return (
-        <div className="key">
-            <button key={props.key} className="key">
-                {props.label}
-            </button>
-        </div>
-    )
+            <div className={`key ${label.toLowerCase()}-key ${isActive ? "active" : ""} ${isNext ? "next-key" : ""}`}>
+                {displayLabel}
+            </div>
+    );
 }
