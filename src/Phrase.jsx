@@ -1,13 +1,17 @@
 export function Phrase({ phrase, currentIndex }) {
+    // Split the phrase into words and add a space after each word except the last one
     let words = phrase.split(" ");
     const spacedWords = [];
     for (let i = 0; i < words.length; i++) {
         spacedWords.push(i < words.length - 1 ? words[i] + " " : words[i]);
     }
-    let globalIndex = 0; // Track the global letter position
+    // Global index to track the position of letters across all words
+    let globalIndex = 0;
 
     return (
+        // Container for the phrase
         <div className="phrase-container">
+            {/* Map through each word and split it into letters */}
             {spacedWords.map((word, wordIndex) => (
                 <span key={wordIndex} className="word">
                     {word.split("").map((letter, letterIndex) => {

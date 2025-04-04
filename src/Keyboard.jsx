@@ -1,5 +1,6 @@
 import { Key } from './Key';
 
+// This component renders a keyboard layout with keys that can be pressed.
 const keyLayout = [
     ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
     ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
@@ -8,6 +9,7 @@ const keyLayout = [
     ["Space"]
 ];
 
+// Mapping for shift key to its corresponding character
 const shiftKeyLayout = [
     ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"],
     ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}", "|"],
@@ -17,6 +19,7 @@ const shiftKeyLayout = [
 ];
 
 export function Keyboard({ keysPressed, nextLetter }) {
+    // Determine if the Shift key is pressed to determine the layout
     const layout = keysPressed.has("Shift") ? shiftKeyLayout : keyLayout;
     return (
         <div className="keyboard-container">

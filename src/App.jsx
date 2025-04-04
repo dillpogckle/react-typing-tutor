@@ -2,6 +2,8 @@ import { Keyboard } from './Keyboard'
 import { Phrase } from "./Phrase.jsx";
 import {useEffect, useState} from "react";
 
+
+// Mapping since toUpperCase() doesn't work for all keys
 const shiftKeyMap = {
     "1": "!",
     "2": "@",
@@ -26,8 +28,9 @@ const shiftKeyMap = {
     "`": "~"
 };
 
+// Sample phrases for the typing test
 const phrases = [
-    "The quick brown fox jumps over the lazy dog and make this really long so it tests the wrapping bit",
+    "The quick brown fox jumps over the lazy dog",
     "Practice makes perfect, so keep typing",
     "Coding is fun when you challenge yourself",
     "Never give up on learning new skills",
@@ -40,12 +43,14 @@ const phrases = [
 ];
 
 export function App() {
+    // State variables to manage the current phrase index, keys pressed, current key, phrase, and current index
     const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
     const [keysPressed, setKeysPressed] = useState(new Set());
     const [currentKey, setCurrentKey] = useState(null);
     const [phrase, setPhrase] = useState(phrases[currentPhraseIndex]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    // Effect to handle keydown and keyup events
     useEffect(() => {
         function keydown(e) {
             if (e.repeat) return;
@@ -54,6 +59,7 @@ export function App() {
         }
 
         function keyup(e) {
+            // This is a little complicated but set up so keys don't get stuck "down" when still pressed when Shift is lifted
             setKeysPressed(prevKeys => {
                 const newKeys = new Set(prevKeys);
                 newKeys.delete(e.key);
@@ -74,12 +80,14 @@ export function App() {
         window.addEventListener("keyup", keyup);
         window.addEventListener("keydown", keydown);
 
+        // Cleanup function to remove event listeners
         return () => {
             window.removeEventListener("keydown", keydown);
             window.removeEventListener("keyup", keyup);
         };
     }, []);
 
+    // Effect to check if the current key matches the next letter in the phrase
     useEffect(() => {
         if (currentKey && currentKey === phrase[currentIndex]) {
             setCurrentIndex(currentIndex + 1);
@@ -88,6 +96,7 @@ export function App() {
 
     const nextLetter = currentIndex < phrase.length ? phrase[currentIndex] : '';
 
+    // Effect to check if the current phrase is complete and move to the next one
     useEffect(() => {
         console.log("Current index: ", currentIndex);
         if (currentIndex === phrases[currentPhraseIndex].length) {
@@ -99,6 +108,7 @@ export function App() {
         }
     }, [currentIndex, currentPhraseIndex]);
 
+    // Effect to update the phrase when the current phrase index changes
     useEffect(() => {
         setPhrase(phrases[currentPhraseIndex]);
     }, [currentPhraseIndex]);

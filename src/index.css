@@ -14,7 +14,6 @@ body {
     margin-top: 40px;
 }
 
-/* Keyboard styles */
 .keyboard {
     display: flex;
     flex-direction: column;
@@ -26,14 +25,12 @@ body {
     width: 880px
 }
 
-/* Row styles */
 .row {
     margin-bottom: 8px;
     display: flex;
     gap: 8px
 }
 
-/* Key styles */
 .key {
     padding: 16px;
     border: 1px solid black;
@@ -51,16 +48,14 @@ body {
 }
 
 .active {
-    transform: translateY(4px); /* Moves button down slightly */
-    box-shadow: none; /* Removes shadow for pressed effect */
+    transform: translateY(4px);
+    box-shadow: none;
 }
 
-/* Shift key */
 .shift-key {
     width: 90px;
 }
 
-/* Space key */
 .space-key {
     width: 300px;
 }
