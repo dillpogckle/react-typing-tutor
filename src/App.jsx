@@ -27,7 +27,7 @@ const shiftKeyMap = {
 };
 
 const phrases = [
-    "The quick brown fox jumps over the lazy dog",
+    "The quick brown fox jumps over the lazy dog and make this really long so it tests the wrapping bit",
     "Practice makes perfect, so keep typing",
     "Coding is fun when you challenge yourself",
     "Never give up on learning new skills",
