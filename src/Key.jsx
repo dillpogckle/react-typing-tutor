@@ -1,4 +1,4 @@
-export function Key({ label, keysPressed, nextLetter }) {
+export function Key({ label, keysPressed, nextLetter, shiftKeyMap  }) {
 
     // Check if the Shift key is pressed
     const isShiftActive = keysPressed.has("Shift");
@@ -6,16 +6,22 @@ export function Key({ label, keysPressed, nextLetter }) {
     const labelCheck = label === "Space" ? " " : label;
 
     // Check if the key is active based on the pressed keys
-    const isActive = isShiftActive ?
-        (label === "Shift" ? isShiftActive : keysPressed.has(labelCheck.toUpperCase())) :
-        keysPressed.has(labelCheck);
+    const isActive = label === "Shift"
+        ? isShiftActive
+        : keysPressed.has(isShiftActive ? labelCheck.toUpperCase() : labelCheck);
 
-    // Check if the next letter is the same as the current key label, Also handles if the letter being processed is an empty string
+    // Logic for shift key
+    let shiftKeyRequired = (/[a-zA-Z]/).test(nextLetter)
+        ? nextLetter === nextLetter.toUpperCase()
+        : Object.values(shiftKeyMap).includes(nextLetter)
+
+
+    // Logic for next key
     const isNext = nextLetter === ""
         ? false
         : nextLetter === " "
             ? labelCheck === nextLetter
-            : labelCheck === (isShiftActive || nextLetter !== nextLetter.toUpperCase() ? nextLetter : "Shift");
+            : labelCheck === (!isShiftActive && shiftKeyRequired ? "Shift" : nextLetter);
 
     // Display the label in uppercase if Shift is active and the label is not "Space" or "Shift"
     const displayLabel = isShiftActive && label !== "Space" && label !== "Shift" ? label.toUpperCase() : label;

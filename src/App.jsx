@@ -116,7 +116,7 @@ export function App() {
     return (
         <div>
             <Phrase phrase={phrase} currentIndex={currentIndex} />
-            <Keyboard keysPressed={keysPressed} nextLetter={nextLetter} />
+            <Keyboard keysPressed={keysPressed} nextLetter={nextLetter} shiftKeyMap={shiftKeyMap} />
         </div>
     );
 }

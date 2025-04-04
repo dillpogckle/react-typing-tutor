@@ -18,7 +18,7 @@ const shiftKeyLayout = [
     ["Space"]
 ];
 
-export function Keyboard({ keysPressed, nextLetter }) {
+export function Keyboard({ keysPressed, nextLetter, shiftKeyMap }) {
     // Determine if the Shift key is pressed to determine the layout
     const layout = keysPressed.has("Shift") ? shiftKeyLayout : keyLayout;
     return (
@@ -32,6 +32,7 @@ export function Keyboard({ keysPressed, nextLetter }) {
                                 label={keyLabel}
                                 keysPressed={keysPressed}
                                 nextLetter={nextLetter}
+                                shiftKeyMap={shiftKeyMap}
                             />
                         ))}
                     </div>

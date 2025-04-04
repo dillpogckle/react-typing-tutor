@@ -5,7 +5,8 @@ export function Phrase({ phrase, currentIndex }) {
     for (let i = 0; i < words.length; i++) {
         spacedWords.push(i < words.length - 1 ? words[i] + " " : words[i]);
     }
-    // Global index to track the position of letters across all words
+    // Global index to track the position of letters across all words I tried using an Effect but it was rendering too late,
+    // so I decided to use a global variable instead, I'm sure there's a better way to do this but I couldn't find it
     let globalIndex = 0;
 
     return (
